@@ -1,6 +1,6 @@
-# AVE System Backend
+# MyAMR Backend
 
-Node.js + Express backend server for the AVE System Multi-Page Application.
+Node.js + Express backend server for the MyAMR Multi-Page Application by NC13 Industries Ltd.
 
 ## Features
 
@@ -79,7 +79,7 @@ app.post('/api/contact', async (req, res) => {
   try {
     await transporter.sendMail({
       from: 'your-email@gmail.com',
-      to: 'support-ave@geovap.cz',
+      to: 'info@myamr.co.uk',
       subject: `Contact Form Submission from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nPhone: ${phone}\nMessage: ${message}`
     });
@@ -136,7 +136,7 @@ git push heroku main
 3. Deploy
 
 ### Traditional Server
-1. Build the frontend and place it in the `public` folder
+1. Build the frontend and place it in the `dist` folder
 2. Run the server:
 ```bash
 node server.js
@@ -144,7 +144,7 @@ node server.js
 3. Use a process manager like PM2 for production:
 ```bash
 npm install -g pm2
-pm2 start server.js --name ave-backend
+pm2 start server.js --name myamr-backend
 pm2 save
 pm2 startup
 ```

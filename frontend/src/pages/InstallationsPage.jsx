@@ -1,198 +1,106 @@
-import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobe, faBuilding, faMapMarkerAlt, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
-function InstallationsPage() {
-  const countries = [
-    'Czech Republic',
-    'Turkey',
-    'Pakistan',
-    'China',
-    'Indonesia',
-    'UK',
-    'Portugal',
-    'USA',
-    'Latvia',
-    'Romania',
-    'Greece',
-    'Iran',
-    'Moldova'
-  ];
+const countries = [
+  'United Kingdom',
+  'United States',
+  'Germany',
+  'France',
+  'Netherlands',
+  'Belgium',
+  'Sweden',
+  'Denmark',
+  'Norway',
+  'Finland',
+  'Austria',
+  'Switzerland'
+];
 
-  const companies = [
-    {
-      name: 'Czech Republic',
-      companies: [
-        { name: 'ELGAS', email: 'obchod@elgas.cz' },
-        { name: 'Sorego Tech', email: 'info@sorego.cz' }
-      ]
-    },
-    {
-      name: 'Croatia',
-      companies: [
-        { name: 'AMR sustavi d.o.o.', email: 'podrska@amrsustavi.hr' }
-      ]
-    },
-    {
-      name: 'Germany',
-      companies: [
-        { name: 'Metreg Technologies GmbH', email: 'bernd.hausmann@metreg-technologies.de' },
-        { name: 'Dresser Utility Solutions GmbH', email: 'hendrik.mueller@dresserutility.com' },
-        { name: 'RMG Messtechnik GmbH', email: 'joerg.schoenbach@rmg.com' }
-      ]
-    },
-    {
-      name: 'Netherlands',
-      companies: [
-        { name: 'Raak Group B.V.', email: 'info@raakinstallatiebouw.nl' }
-      ]
-    },
-    {
-      name: 'Poland',
-      companies: [
-        { name: 'PLUM', email: 'gas@plum.pl' }
-      ]
-    },
-    {
-      name: 'Portugal',
-      companies: [
-        { name: 'ENERMETER', email: 'enermeter@enermeter.pt' }
-      ]
-    },
-    {
-      name: 'Romania',
-      companies: [
-        { name: 'SAMGAS Romania', email: 'samgas@samgas.ro' }
-      ]
-    },
-    {
-      name: 'Greece',
-      companies: [
-        { name: 'Engineers+partners p.c.', email: 'info@engineers-partners.com' }
-      ]
-    },
-    {
-      name: 'Slovakia',
-      companies: [
-        { name: 'Stimcorect', email: 'stimcorect@stimcorect.sk' }
-      ]
-    },
-    {
-      name: 'United Arab Emirates',
-      companies: [
-        { name: 'Teco M.E. Group', email: 'me-support@tecomat.cz' }
-      ]
-    },
-    {
-      name: 'United Kingdom',
-      companies: [
-        { name: 'Utility Meters Warehouse Ltd', email: 'sales@umwuk.com' }
-      ]
-    },
-    {
-      name: 'Serbia',
-      companies: [
-        { name: 'TipexAs d.o.o.', email: 'office@tipexas.com' }
-      ]
-    },
-    {
-      name: 'Turkey',
-      companies: [
-        { name: 'ESCOM Enerji Otomasyon', email: 'zeytun@escom.com.tr' }
-      ]
-    },
-    {
-      name: 'USA',
-      companies: [
-        { name: 'Elgas USA', email: 'andreas.skof@elgasusa.com' }
-      ]
-    },
-    {
-      name: 'Brazil',
-      companies: [
-        { name: 'Gascat Indústria', email: 'sales@gascat.com.br' }
-      ]
-    },
-    {
-      name: 'Canada',
-      companies: [
-        { name: 'Elgas USA', email: 'andreas.skof@elgasusa.com' }
-      ]
-    },
-    {
-      name: 'Qatar',
-      companies: [
-        { name: 'Power Gas WLL', email: 'maqsood@powergas.qa' }
-      ]
-    },
-    {
-      name: 'Moldova',
-      companies: [
-        { name: 'Invent-IN S.R.L.', email: 'inventgaz@gmail.com' }
-      ]
-    },
-    {
-      name: 'Iran',
-      companies: [
-        { name: 'Delta Gas Mobin Group', email: 'info@delta-gas.com' }
-      ]
-    }
-  ];
+const companiesByCountry = {
+  'United Kingdom': ['British Gas', 'EDF Energy', 'Scottish Power', 'National Grid'],
+  'United States': ['PG&E', 'Duke Energy', 'Southern Company', 'NextEra Energy'],
+  'Germany': ['E.ON', 'RWE', 'Vattenfall', 'EnBW'],
+  'France': ['EDF', 'Engie', 'TotalEnergies'],
+  'Netherlands': ['Eneco', 'Vattenfall', 'Essent'],
+  'Belgium': ['Fluvius', 'Sibelga', 'ORES']
+};
 
+const statistics = {
+  totalInstallations: '500+',
+  countries: '12+',
+  metersManaged: '1M+',
+  customers: '1000+'
+};
+
+export default function InstallationsPage() {
   return (
-    <div>
-      {/* Page Header */}
-      <section className="hero" style={{ padding: '4rem 0', background: 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)' }}>
-        <div className="container text-center">
-          <h1 style={{ color: 'white' }}>Installations Worldwide</h1>
-          <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1.25rem' }}>
-            The AVE system is used throughout the world by the largest energy companies
+    <div className="installations-page">
+      {/* Hero Section */}
+      <section className="page-hero">
+        <div className="hero-overlay">
+          <h1 style={{ color: 'white' }}>MyAMR Installations</h1>
+          <p style={{ color: 'white', fontSize: '1.2rem' }}>
+            The MyAMR system is used throughout the world by the largest energy companies
           </p>
         </div>
       </section>
 
-      {/* World Map Section */}
-      <section className="section installations">
-        <div className="container text-center">
-          <h2 className="section-title">Global Presence</h2>
-          <p style={{ fontSize: '1.25rem', marginBottom: '2rem' }}>
-            AVE System installations can be found in multiple countries across different continents.
+      {/* Statistics Section */}
+      <section className="section statistics">
+        <div className="container">
+          <h2 className="section-title">Global Reach</h2>
+          <div className="stats-grid">
+            <div className="stat-card">
+              <div className="stat-number">{statistics.totalInstallations}</div>
+              <div className="stat-label">Installations</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">{statistics.countries}</div>
+              <div className="stat-label">Countries</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">{statistics.metersManaged}</div>
+              <div className="stat-label">Meters Managed</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">{statistics.customers}</div>
+              <div className="stat-label">Satisfied Customers</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Countries Section */}
+      <section className="section">
+        <div className="container">
+          <h2 className="section-title">Countries with MyAMR Installations</h2>
+          <p style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            MyAMR installations can be found in multiple countries across different continents.
           </p>
-          
-          {/* Countries Grid */}
-          <div className="country-grid">
+          <div className="countries-grid">
             {countries.map((country, index) => (
-              <div key={index} className="country-item">
-                <i className="fas fa-map-marker-alt" style={{ color: '#3498db', marginRight: '0.5rem' }}></i>
-                {country}
+              <div key={index} className="country-card">
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                <span>{country}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Companies by Country */}
-      <section className="section" style={{ backgroundColor: '#f8f9fa' }}>
+      {/* Companies Section */}
+      <section className="section">
         <div className="container">
-          <h2 className="section-title">Companies Using AVE System</h2>
-          <p style={{ textAlign: 'center', fontSize: '1.25rem', marginBottom: '2rem' }}>
-            Trusted by leading energy companies worldwide
-          </p>
-          
-          <div className="grid">
-            {companies.map((countryGroup, index) => (
-              <div key={index} className="card">
-                <h3 style={{ color: '#3498db', marginBottom: '1rem' }}>
-                  <i className="fas fa-flag" style={{ marginRight: '0.5rem' }}></i>
-                  {countryGroup.name}
+          <h2 className="section-title">Companies Using MyAMR</h2>
+          <div className="companies-list">
+            {Object.entries(companiesByCountry).map(([country, companies]) => (
+              <div key={country} className="country-companies">
+                <h3>
+                  <FontAwesomeIcon icon={faGlobe} /> {country}
                 </h3>
-                <ul style={{ listStyle: 'none' }}>
-                  {countryGroup.companies.map((company, companyIndex) => (
-                    <li key={companyIndex} style={{ padding: '0.5rem 0', borderBottom: companyIndex < countryGroup.companies.length - 1 ? '1px solid #eee' : 'none' }}>
-                      <strong>{company.name}</strong>
-                      <br />
-                      <a href={`mailto:${company.email}`} style={{ color: '#3498db' }}>
-                        {company.email}
-                      </a>
-                    </li>
+                <ul>
+                  {companies.map((company, index) => (
+                    <li key={index}>{company}</li>
                   ))}
                 </ul>
               </div>
@@ -201,58 +109,21 @@ function InstallationsPage() {
         </div>
       </section>
 
-      {/* Statistics */}
-      <section className="section">
-        <div className="container text-center">
-          <h2 className="section-title">By The Numbers</h2>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap' }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#3498db', marginBottom: '0.5rem' }}>
-                15+
-              </div>
-              <p style={{ fontSize: '1.25rem' }}>Years in Business</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#3498db', marginBottom: '0.5rem' }}>
-                20+
-              </div>
-              <p style={{ fontSize: '1.25rem' }}>Countries</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#3498db', marginBottom: '0.5rem' }}>
-                100+
-              </div>
-              <p style={{ fontSize: '1.25rem' }}>Companies</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#3498db', marginBottom: '0.5rem' }}>
-                1M+
-              </div>
-              <p style={{ fontSize: '1.25rem' }}>Households</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="section" style={{ backgroundColor: '#f8f9fa' }}>
+      {/* Testimonial Section */}
+      <section className="section testimonial">
         <div className="container">
-          <div className="card" style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center' }}>
-              <i className="fas fa-quote-left" style={{ fontSize: '2rem', color: '#3498db', marginBottom: '1rem' }}></i>
-              <p style={{ fontSize: '1.25rem', fontStyle: 'italic', marginBottom: '1rem' }}>
-                "The AVE system has transformed our energy data management, providing accurate and timely information that has significantly improved our operations and customer service."
-              </p>
-              <p style={{ color: '#7f8c8d' }}>
-                - Energy Company Representative
-              </p>
-              <i className="fas fa-quote-right" style={{ fontSize: '2rem', color: '#3498db', marginTop: '1rem' }}></i>
+          <h2 className="section-title">What Our Customers Say</h2>
+          <div className="testimonial-card">
+            <div className="quote-icon">
+              <FontAwesomeIcon icon={faQuoteLeft} size="2x" />
             </div>
+            <p className="testimonial-text">
+              "The MyAMR system has transformed our energy data management, providing accurate and timely information that has significantly improved our operations and customer service."
+            </p>
+            <p className="testimonial-author">- Energy Manager, Major Utility Company</p>
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-export default InstallationsPage;

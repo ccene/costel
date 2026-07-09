@@ -1,8 +1,8 @@
 # Contributing Guide
 
-Thank you for your interest in contributing to the AVE System MPA project! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to the MyAMR MPA project by NC13 Industries Ltd.! This document provides guidelines for contributing to the project.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
 - [How to Contribute](#how-to-contribute)
@@ -13,7 +13,7 @@ Thank you for your interest in contributing to the AVE System MPA project! This 
 - [Commit Message Guidelines](#commit-message-guidelines)
 - [Code Review Process](#code-review-process)
 
-## 🤝 Code of Conduct
+## Code of Conduct
 
 Please follow these guidelines when contributing:
 
@@ -23,7 +23,7 @@ Please follow these guidelines when contributing:
 - Include tests for new features
 - Update documentation as needed
 
-## 🛠️ How to Contribute
+## How to Contribute
 
 ### Reporting Bugs
 
@@ -54,7 +54,7 @@ Please follow these guidelines when contributing:
 7. Push to your fork
 8. Submit a pull request
 
-## 💻 Development Setup
+## Development Setup
 
 ### Prerequisites
 
@@ -67,7 +67,7 @@ Please follow these guidelines when contributing:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd ave-system-mpa
+cd myamr-mpa
 
 # Install dependencies
 cd backend && npm install
@@ -95,7 +95,7 @@ cd frontend && npm run dev
 - `npm start` - Start production server
 - `npm run dev` - Start with nodemon (auto-restart)
 
-## 📜 Coding Standards
+## Coding Standards
 
 ### JavaScript/JSX
 
@@ -131,7 +131,7 @@ cd frontend && npm run dev
 - **Functions**: camelCase
 - **Constants**: UPPER_SNAKE_CASE
 
-## 🧪 Testing
+## Testing
 
 ### Test Structure
 
@@ -139,12 +139,12 @@ All tests are located in `frontend/src/test/`:
 
 ```
 frontend/src/test/
-├──── setup.js         # Test setup and mocks
-├──── App.test.jsx     # Main app tests
-├──── Navbar.test.jsx  # Navbar component tests
-├──── Footer.test.jsx  # Footer component tests
-├──── HomePage.test.jsx # Home page tests
-└──── ContactPage.test.jsx # Contact page tests
+├── setup.js         # Test setup and mocks
+├── App.test.jsx     # Main app tests
+├── Navbar.test.jsx  # Navbar component tests
+├── Footer.test.jsx  # Footer component tests
+├── HomePage.test.jsx # Home page tests
+└── ContactPage.test.jsx # Contact page tests
 ```
 
 ### Writing Tests
@@ -179,16 +179,16 @@ npm run test:coverage
 
 Coverage reports are generated in the `coverage/` directory.
 
-## 📝 Pull Request Guidelines
+## Pull Request Guidelines
 
 ### Before Submitting
 
-1. ✅ All tests pass (`npm test`)
-2. ✅ Code is properly formatted
-3. ✅ New features have tests
-4. ✅ Documentation is updated
-5. ✅ No console.log statements (use proper logging)
-6. ✅ No hardcoded secrets or credentials
+1. All tests pass (`npm test`)
+2. Code is properly formatted
+3. New features have tests
+4. Documentation is updated
+5. No console.log statements (use proper logging)
+6. No hardcoded secrets or credentials
 
 ### PR Template
 
@@ -219,7 +219,7 @@ Coverage reports are generated in the `coverage/` directory.
 - [ ] No breaking changes (or documented)
 - [ ] Ready for review
 
-## 📝 Commit Message Guidelines
+## Commit Message Guidelines
 
 ### Format
 
@@ -288,7 +288,7 @@ The scope should be the component or module affected:
 - Include breaking changes if any
 - Example: `Closes #123` or `BREAKING CHANGE: ...`
 
-## 👀 Code Review Process
+## Code Review Process
 
 ### For Contributors
 
@@ -308,15 +308,15 @@ The scope should be the component or module affected:
 
 ### Review Criteria
 
-- ✅ Code follows project standards
-- ✅ All tests pass
-- ✅ New features have tests
-- ✅ Documentation is updated
-- ✅ No breaking changes (or properly documented)
-- ✅ Code is maintainable and readable
-- ✅ Performance considerations addressed
+- Code follows project standards
+- All tests pass
+- New features have tests
+- Documentation is updated
+- No breaking changes (or properly documented)
+- Code is maintainable and readable
+- Performance considerations addressed
 
-## 🚀 Release Process
+## Release Process
 
 ### Versioning
 
@@ -346,7 +346,7 @@ git push origin main
 git push origin v1.0.1
 ```
 
-## 📚 Resources
+## Resources
 
 - [React Documentation](https://reactjs.org/docs/getting-started.html)
 - [Vite Documentation](https://vitejs.dev/guide/)
@@ -354,6 +354,8 @@ git push origin v1.0.1
 - [Testing Library Documentation](https://testing-library.com/docs/)
 - [Express Documentation](https://expressjs.com/)
 
-## 🙏 Thank You!
+## Thank You!
 
-Thank you for contributing to the AVE System MPA project! Your contributions help make this project better for everyone.
+Thank you for contributing to the MyAMR MPA project by NC13 Industries Ltd.! Your contributions help make this project better for everyone.
+
+For more information, visit: [https://www.myamr.co.uk](https://www.myamr.co.uk)

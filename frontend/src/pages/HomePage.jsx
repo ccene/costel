@@ -1,99 +1,93 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faTachometerAlt, faThermometerHalf, faTint, faWifi, faCar, faAward, faUsers, faBuilding, faChartLine, faBolt, faUserTie, faIndustry, faHome } from '@fortawesome/free-solid-svg-icons';
 
-function HomePage() {
-  const advantages = [
-    'Automatic energy-consumption reading',
-    'Detailed monitoring of energy consumption',
-    'Reading the consumption of millions of households',
-    'Support for meters from different manufacturers',
-    'Tens of thousands of remote transfers',
-    'Easy extensibility and scalability',
-    'Energy-reading cost reduction',
-    'Leak and theft detection',
-    'Outstanding technical support',
-    'More than 15 years in business'
+export default function HomePage() {
+  const [activeTab, setActiveTab] = useState('main');
+
+  const energyTypes = [
+    { name: 'Gas', icon: faCog, description: 'Natural gas consumption monitoring' },
+    { name: 'Power', icon: faBolt, description: 'Electrical energy tracking' },
+    { name: 'Heat', icon: faThermometerHalf, description: 'Thermal energy measurement' },
+    { name: 'Water', icon: faTint, description: 'Water usage monitoring' },
+    { name: 'IoT', icon: faWifi, description: 'Internet of Things device integration' },
+    { name: 'Vehicles', icon: faCar, description: 'Fleet tracking and management' },
+  ];
+
+  const mainAdvantages = [
+    'Automated data collection from various meter types',
+    'Real-time monitoring and alerting',
+    'Comprehensive reporting and analytics',
+    'Seamless integration with existing systems',
+    'Scalable architecture for growing needs',
+    'User-friendly interface for all skill levels',
   ];
 
   const otherAdvantages = [
-    'Design and controls identical with MS Office',
-    'Possible integration with GIS and SCADA systems',
-    'Certified compatibility with Microsoft products',
-    'Bidirectional communication with CRM/billing systems',
-    'Display of the position of devices on online maps',
-    'Sending alarms via text and email messages',
-    'Meets security audit requirements',
-    'Generation of alternative values',
-    'Easy data exchange with MS Excel',
-    'Energy balance module'
+    'Reduced operational costs through automation',
+    'Improved accuracy with automated readings',
+    'Enhanced decision-making with real-time data',
+    'Regulatory compliance support',
+    'Multi-language and multi-currency support',
+    'Mobile access for field personnel',
   ];
 
   const targetAudiences = [
     {
       title: 'Distribution Companies',
-      description: 'The automatic reading of business data from different types of energy meters, checking and transfer of the data to billing systems and third-party applications (SAP, Oracle, OTE, EBT, etc.).',
-      icon: 'fa-building'
+      icon: faBuilding,
+      description: 'Manage energy distribution networks efficiently'
     },
     {
       title: 'Energy Traders',
-      description: 'Provides an overview of customers\' energy consumption using a Web application. The trader can access data only from the period during which they have a contract with the customer.',
-      icon: 'fa-chart-line'
+      icon: faChartLine,
+      description: 'Access real-time data for trading decisions'
     },
     {
       title: 'Power Engineers',
-      description: 'A perfect tool for the monitoring of the maximum hourly/daily energy consumption. Meter reading data is presented in the form of tables, trends, and reports.',
-      icon: 'fa-cogs'
+      icon: faUserTie,
+      description: 'Monitor and analyze energy systems performance'
     },
     {
       title: 'Energy Consumers',
-      description: 'The Web portal allows every consumer to view the amount of energy they have consumed. They can also manually enter new meter reading data into the system.',
-      icon: 'fa-users'
-    }
-  ];
-
-  const energyTypes = [
-    { name: 'Gas', icon: 'fa-fire' },
-    { name: 'Power', icon: 'fa-bolt' },
-    { name: 'Heat', icon: 'fa-sun' },
-    { name: 'Water', icon: 'fa-tint' },
-    { name: 'IoT', icon: 'fa-network-wired' },
-    { name: 'Vehicles', icon: 'fa-car' }
+      icon: faHome,
+      description: 'Track and optimize your energy consumption'
+    },
   ];
 
   return (
-    <div>
+    <div className="home-page">
       {/* Hero Section */}
       <section className="hero">
-        <div className="container hero-content">
-          <h1>AVE System</h1>
-          <p>
-            A system designed to automatically read energy-consumption data from 
-            different types of devices, validate it, show it on a PC, in a Web 
-            browser, or on a tablet/smartphone, and pass it to a CRM system for 
-            billing purposes.
-          </p>
+        <div className="hero-content">
+          <h1>MyAMR</h1>
+          <p className="hero-subtitle">Energy Consumption Data Reading and Management System</p>
           <div className="hero-buttons">
-            <Link to="/contact" className="btn">
-              Contact Us
+            <Link to="/modules" className="btn btn-primary">
+              Explore Modules
             </Link>
-            <a href="#" className="btn btn-outline" style={{ color: 'white', borderColor: 'white' }}>
-              Try Demo
-            </a>
-            <a href="#" className="btn btn-outline" style={{ color: 'white', borderColor: 'white' }}>
-              Read Leaflet
-            </a>
+            <Link to="/how-it-works" className="btn btn-secondary">
+              How It Works
+            </Link>
           </div>
-          
-          {/* Energy Types */}
-          <div style={{ marginTop: '3rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-              {energyTypes.map((energy, index) => (
-                <div key={index} style={{ textAlign: 'center' }}>
-                  <i className={`fas ${energy.icon}`} style={{ fontSize: '2rem', marginBottom: '0.5rem' }}></i>
-                  <p>{energy.name}</p>
+        </div>
+      </section>
+
+      {/* Energy Types */}
+      <section className="section energy-types">
+        <div className="container">
+          <h2 className="section-title">Energy Types We Support</h2>
+          <div className="energy-grid">
+            {energyTypes.map((energy, index) => (
+              <div key={index} className="energy-card">
+                <div className="energy-icon">
+                  <FontAwesomeIcon icon={energy.icon} size="2x" />
                 </div>
-              ))}
-            </div>
+                <h3>{energy.name}</h3>
+                <p>{energy.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -102,35 +96,41 @@ function HomePage() {
       <section className="section advantages">
         <div className="container">
           <h2 className="section-title">Main Advantages</h2>
-          <div className="grid">
-            <div className="card">
-              <ul className="advantage-list">
-                {advantages.map((advantage, index) => (
-                  <li key={index}>{advantage}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="card">
-              <h3>Other Advantages</h3>
-              <ul className="advantage-list">
-                {otherAdvantages.map((advantage, index) => (
-                  <li key={index}>{advantage}</li>
-                ))}
-              </ul>
-            </div>
+          <ul className="advantages-list">
+            {mainAdvantages.map((advantage, index) => (
+              <li key={index} className="advantage-item">
+                <span className="advantage-number">{index + 1}</span>
+                <span className="advantage-text">{advantage}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Other Advantages */}
+      <section className="section other-advantages">
+        <div className="container">
+          <h2 className="section-title">Other Advantages</h2>
+          <div className="other-advantages-grid">
+            {otherAdvantages.map((advantage, index) => (
+              <div key={index} className="other-advantage-card">
+                <span className="check-icon">✓</span>
+                <p>{advantage}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* AVE System Is Designed For */}
-      <section className="section audiences">
+      {/* MyAMR System Is Designed For */}
+      <section className="section target-audience">
         <div className="container">
-          <h2 className="section-title">The AVE System Is Designed For</h2>
-          <div className="grid">
+          <h2 className="section-title">The MyAMR System Is Designed For</h2>
+          <div className="audience-grid">
             {targetAudiences.map((audience, index) => (
-              <div key={index} className="card audience-card">
+              <div key={index} className="audience-card">
                 <div className="audience-icon">
-                  <i className={`fas ${audience.icon}`}></i>
+                  <FontAwesomeIcon icon={audience.icon} size="2x" />
                 </div>
                 <h3>{audience.title}</h3>
                 <p>{audience.description}</p>
@@ -141,32 +141,33 @@ function HomePage() {
       </section>
 
       {/* Award Section */}
-      <section className="section" style={{ backgroundColor: '#f8f9fa' }}>
-        <div className="container text-center">
-          <div className="card" style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <i className="fas fa-award" style={{ fontSize: '3rem', color: '#FFD700', marginBottom: '1rem' }}></i>
-            <p style={{ fontStyle: 'italic', fontSize: '1.1rem' }}>
-              "AVE is the winner of the prestigious Microsoft Industry Awards 2008 
-              competition in the category Best Solution in Industrial Production."
-            </p>
+      <section className="section award">
+        <div className="container">
+          <div className="award-content">
+            <div className="award-icon">
+              <FontAwesomeIcon icon={faAward} size="3x" />
+            </div>
+            <div className="award-text">
+              <p>
+                MyAMR is the winner of the prestigious Microsoft Industry Awards 2008 
+                in the category Best Solution in Industrial Production
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="section" style={{ backgroundColor: '#2c3e50', color: 'white' }}>
-        <div className="container text-center">
-          <h2>Ready to Transform Your Energy Data Management?</h2>
-          <p style={{ fontSize: '1.25rem', marginBottom: '2rem' }}>
-            Join hundreds of companies worldwide using AVE System for efficient energy data collection and management.
+      {/* CTA Section */}
+      <section className="section cta">
+        <div className="container">
+          <p>
+            Join hundreds of companies worldwide using MyAMR for efficient energy data collection and management.
           </p>
-          <Link to="/contact" className="btn btn-accent" style={{ fontSize: '1.25rem', padding: '1rem 2rem' }}>
-            Get in Touch
+          <Link to="/contact" className="btn btn-primary">
+            Get Started
           </Link>
         </div>
       </section>
     </div>
   );
 }
-
-export default HomePage;

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the AVE System MPA project will be documented in this file.
+All notable changes to the MyAMR MPA project by NC13 Industries Ltd. will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Updated all documentation to reflect Vite migration
 - Renamed .js files to .jsx for proper JSX support
 - Updated package.json scripts for Vite
+- Rebranded from AVE System to MyAMR
+- Updated company information to NC13 Industries Ltd.
+- Updated website references to myamr.co.uk
 
 ### Fixed
 - Test compatibility issues with Vite and Vitest
@@ -26,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 - Initial project structure with backend and frontend
-- 7 main pages: Home, Modules, How AVE Works, Installations, Partners, About, Contact
+- 7 main pages: Home, Modules, How MyAMR Works, Installations, Partners, About, Contact
 - Responsive design for all screen sizes
 - Contact form with validation
 - Node.js + Express backend with contact API
@@ -39,8 +42,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Features
 - **Home Page**: Hero section, energy types, advantages, target audiences, award
-- **Modules Page**: All 6 AVE modules with descriptions and features
-- **How AVE Works Page**: 6-step workflow, architecture diagram, benefits
+- **Modules Page**: All 6 MyAMR modules with descriptions and features
+- **How MyAMR Works Page**: 6-step workflow, architecture diagram, benefits
 - **Installations Page**: Countries list, companies by country, statistics
 - **Partners Page**: Global partners list, partnership benefits
 - **About Page**: Company overview, history timeline, values, awards
@@ -69,6 +72,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Moved index.html from public/ to root directory
 - Updated package.json scripts
 - Updated all documentation
+- Rebranded to MyAMR by NC13 Industries Ltd.
 
 ### Performance
 - Development server start: ~10-100x faster
@@ -120,3 +124,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **MAJOR**: Breaking changes
 - **MINOR**: New features (backward compatible)
 - **PATCH**: Bug fixes (backward compatible)
+
+For more information, visit: [https://www.myamr.co.uk](https://www.myamr.co.uk)

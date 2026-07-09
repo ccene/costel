@@ -1,234 +1,276 @@
-# Quick Start Guide
+# MyAMR Quick Start Guide
 
-Get the AVE System MPA running in just a few minutes!
+Get the MyAMR Multi-Page Application running in just a few minutes!
 
-## 🚀 Fast Setup
+**By NC13 Industries Ltd.** - [https://www.myamr.co.uk](https://www.myamr.co.uk)
 
-### 1. Install Dependencies
+## Prerequisites
 
-Open two terminal windows and run:
+Before you begin, ensure you have the following installed:
 
-**Terminal 1 (Backend):**
+- [Node.js](https://nodejs.org/) (v20 or later recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js) or [yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/) (optional, for cloning the repository)
+
+## Quick Installation
+
+### Option 1: Using Git
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd myamr-mpa
+
+# Install all dependencies
+npm install
+
+# Install frontend dependencies
+cd frontend && npm install
+cd ..
+
+# Install backend dependencies
+cd backend && npm install
+cd ..
+```
+
+### Option 2: Manual Download
+
+1. Download the project files
+2. Extract to a folder named `myamr-mpa`
+3. Open terminal in the project directory
+4. Run the installation commands above
+
+## Running the Application
+
+### Development Mode (Recommended for Development)
+
+Open **two terminal windows**:
+
+**Terminal 1 - Backend Server:**
 ```bash
 cd backend
-npm install
 npm start
 ```
+The backend server will start on `http://localhost:5000`
 
-**Terminal 2 (Frontend):**
+**Terminal 2 - Frontend Development Server:**
 ```bash
 cd frontend
-npm install
 npm run dev
 ```
+The frontend will start on `http://localhost:3000` and automatically open in your browser.
 
-### 2. Access the Application
+### Production Mode
 
-- Frontend: [http://localhost:3000](http://localhost:3000)
-- Backend API: [http://localhost:5000](http://localhost:5000)
+**Step 1: Build the Frontend**
+```bash
+cd frontend
+npm run build
+```
+This creates optimized production files in the `dist` folder.
 
-## 📁 Project Structure
+**Step 2: Start the Backend Server**
+```bash
+cd backend
+npm start
+```
+The backend will serve the built frontend on `http://localhost:5000`
+
+## Project Structure
 
 ```
-ave-system-mpa/
-├──── backend/
-│   ├──── server.js          # Express server
-│   └──── package.json
-├──── frontend/
-│   ├──── index.html         # Entry HTML
-│   ├──── package.json
-│   ├──── vite.config.js     # Vite config
-│   ├──── vitest.config.js   # Test config
-│   └──── src/
-│       ├──── index.jsx      # Entry point
-│       ├──── App.jsx        # Routes
-│       ├──── components/
-│       │   ├──── Navbar.jsx
-│       │   └──── Footer.jsx
-│       ├──── pages/
-│       │   ├──── HomePage.jsx
-│       │   ├──── ModulesPage.jsx
-│       │   ├──── HowItWorksPage.jsx
-│       │   ├──── InstallationsPage.jsx
-│       │   ├──── PartnersPage.jsx
-│       │   ├──── AboutPage.jsx
-│       │   └──── ContactPage.jsx
-│       ├──── styles/
-│       │   └──── main.css
-│       └──── test/
-│           ├──── setup.js
-│           ├──── App.test.jsx
-│           ├──── Navbar.test.jsx
-│           ├──── Footer.test.jsx
-│           ├──── HomePage.test.jsx
-│           └──── ContactPage.test.jsx
-├──── .github/
-│   └──── workflows/
-│       └──── ci-cd.yml      # CI/CD pipeline
-├──── README.md
-├──── QUICKSTART.md
-└──── PROJECT_SUMMARY.md
+myamr-mpa/
+├── backend/              # Backend server
+│   ├── server.js        # Express server with API
+│   └── package.json
+├── frontend/             # Frontend application
+│   ├── src/             # Source files
+│   │   ├── App.jsx      # Main app with routes
+│   │   ├── index.jsx    # Entry point
+│   │   ├── components/  # Reusable components
+│   │   ├── pages/       # Page components
+│   │   ├── styles/      # CSS styles
+│   │   └── test/        # Unit tests
+│   ├── index.html       # HTML entry file
+│   ├── vite.config.js   # Vite configuration
+│   └── package.json
+├── README.md            # Full documentation
+└── .github/             # GitHub workflows
+    └── workflows/
+        └── ci-cd.yml    # CI/CD pipeline
 ```
 
-## 🌐 Available Pages
+## Available Pages
 
 | Route | Page | Description |
 |-------|------|-------------|
-| `/` | Home | Main landing page with overview |
-| `/modules` | Modules | All 6 AVE system modules |
-| `/how-it-works` | How AVE Works | Workflow and system explanation |
-| `/installations` | Installations | Global installations and companies |
-| `/partners` | Partners | Global network of partners |
+| `/` | Home | Main landing page with hero, energy types, and advantages |
+| `/modules` | Modules | Overview of all 6 MyAMR modules |
+| `/how-it-works` | How MyAMR Works | 6-step workflow and system architecture |
+| `/installations` | Installations | Global installations and statistics |
+| `/partners` | Partners | Partner network and benefits |
 | `/about` | About | Company information and history |
 | `/contact` | Contact | Contact form and information |
 
-## 🔧 Common Tasks
+## Common Commands
 
-### Test Contact Form
-1. Go to [http://localhost:3000/contact](http://localhost:3000/contact)
-2. Fill out the form
-3. Check the backend console - you'll see the submission logged
-
-### Change Colors
-Edit `frontend/src/styles/main.css`:
-```css
-:root {
-  --primary-color: #2c3e50;    /* Change this */
-  --secondary-color: #3498db;  /* Change this */
-  --accent-color: #e74c3c;    /* Change this */
-}
-```
-
-### Add New Page
-1. Create file in `frontend/src/pages/` (e.g., `NewPage.jsx`)
-2. Add route in `frontend/src/App.jsx`
-3. Add link in `frontend/src/components/Navbar.jsx`
-
-### Run Tests
-```bash
-cd frontend
-npm test
-```
-
-Or in watch mode:
-```bash
-npm run test:watch
-```
-
-With coverage:
-```bash
-npm run test:coverage
-```
-
-## 📊 Deployment Options
-
-### Option A: Local Development (Recommended for Testing)
-```bash
-# Terminal 1
-cd backend && npm start
-
-# Terminal 2
-cd frontend && npm run dev
-```
-
-### Option B: Production Build
-```bash
-# Build frontend
-cd frontend && npm run build
-
-# Start backend (serves frontend too)
-cd backend && npm start
-```
-
-### Option C: Separate Hosting
-1. Build frontend: `cd frontend && npm run build`
-2. Host `frontend/dist` folder on Netlify/Vercel
-3. Deploy backend to Railway/Render/Heroku
-4. Update API endpoint in `ContactPage.jsx`
-
-### Option D: GitHub Pages (Frontend Only)
-1. Push to main branch
-2. CI/CD pipeline will build and deploy to GitHub Pages
-3. Backend API calls will need to be proxied or use a separate backend service
-
-## 🎨 Design Features
-
-- ✅ Responsive design (mobile, tablet, desktop)
-- ✅ Clean, modern UI
-- ✅ Smooth animations and transitions
-- ✅ Font Awesome icons
-- ✅ Professional color scheme
-- ✅ Consistent styling across all pages
-- ✅ Vite for fast builds and HMR
-- ✅ Unit tests with Vitest
-- ✅ CI/CD pipeline with GitHub Actions
-
-## 📋 Available Scripts
-
-### Frontend
+### Frontend Commands
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start dev server (port 3000) |
+| `npm run dev` | Start development server |
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build |
 | `npm test` | Run unit tests |
 | `npm run test:watch` | Run tests in watch mode |
 | `npm run test:coverage` | Run tests with coverage |
 
-### Backend
+### Backend Commands
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Start production server (port 5000) |
+| `npm start` | Start production server |
 | `npm run dev` | Start with nodemon (auto-restart) |
 
-## 🐛 Troubleshooting
+## Testing
 
-**Frontend won't start?**
+Run all unit tests:
 ```bash
 cd frontend
-rm -rf node_modules package-lock.json
-npm install
-npm run dev
+npm test
 ```
 
-**Backend won't start?**
+Run tests in watch mode (auto-reload on changes):
 ```bash
+cd frontend
+npm run test:watch
+```
+
+Generate test coverage report:
+```bash
+cd frontend
+npm run test:coverage
+```
+
+## Customization
+
+### Change the Brand Name
+
+To change "MyAMR" to your own brand:
+
+1. Update `frontend/src/components/Navbar.jsx` - Change the logo text
+2. Update `frontend/src/components/Footer.jsx` - Change the brand name
+3. Update all page files in `frontend/src/pages/` - Replace "MyAMR" with your brand
+4. Update `frontend/index.html` - Change title and meta tags
+
+### Change Contact Information
+
+Update contact details in:
+- `frontend/src/components/Footer.jsx`
+- `frontend/src/pages/ContactPage.jsx`
+- `backend/server.js` - Update the email in the contact form handler
+
+### Change Colors
+
+Edit `frontend/src/styles/main.css`:
+```css
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  /* Change these to your brand colors */
+}
+```
+
+## Troubleshooting
+
+### Backend not starting
+
+```bash
+# Make sure you're in the backend directory
 cd backend
-rm -rf node_modules package-lock.json
+# Check if dependencies are installed
 npm install
+# Start the server
 npm start
 ```
 
-**CORS issues?**
-- Ensure backend is running on port 5000
-- Frontend proxy is configured in `frontend/vite.config.js`
+### Frontend not starting
 
-**Contact form not working?**
-- Check backend console for errors
-- Verify backend server is running
-- Test API endpoint: `curl -X POST http://localhost:5000/api/contact -H "Content-Type: application/json" -d '{"name":"Test","email":"test@test.com","message":"Hello"}'`
+```bash
+# Make sure you're in the frontend directory
+cd frontend
+# Check if dependencies are installed
+npm install
+# Start the development server
+npm run dev
+```
 
-**Tests failing?**
-- Ensure all dependencies are installed: `npm install`
-- Run tests with verbose output: `npm run test:watch`
-- Check test files in `frontend/src/test/`
+### API calls failing
 
-## 📚 Documentation
+Ensure the backend server is running on port 5000. The frontend is configured to proxy API requests to `http://localhost:5000`.
 
-- **Main Documentation**: [README.md](./README.md)
-- **Frontend Documentation**: [frontend/README.md](./frontend/README.md)
-- **Project Summary**: [PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md)
-- **CI/CD Pipeline**: [.github/workflows/ci-cd.yml](.github/workflows/ci-cd.yml)
+If you're running the backend on a different port, update the proxy in `frontend/vite.config.js`:
+```javascript
+proxy: {
+  '/api': {
+    target: 'http://localhost:YOUR_PORT',
+    changeOrigin: true,
+  },
+},
+```
 
-## 🚀 Next Steps
+### Tests failing
 
-1. ✅ Clone and install dependencies
-2. ✅ Start backend and frontend servers
-3. ✅ Access the app at http://localhost:3000
-4. ✅ Explore all 7 pages
-5. ✅ Test the contact form
-6. ✅ Run the unit tests
-7. ✅ Customize as needed
-8. ✅ Deploy to production
+```bash
+# Install test dependencies
+cd frontend
+npm install
+# Run tests again
+npm test
+```
+
+## Deployment
+
+### Local Deployment
+
+Just run the production mode as described above. The backend will serve the frontend on port 5000.
+
+### Heroku Deployment
+
+1. Create a Heroku account
+2. Install Heroku CLI
+3. Create a new Heroku app
+4. Add Node.js buildpack
+5. Deploy:
+```bash
+git push heroku main
+```
+
+### Separate Frontend/Backend Deployment
+
+**Frontend (Vercel/Netlify):**
+1. Build the frontend: `npm run build`
+2. Deploy the `dist` folder
+3. Update API endpoints in `ContactPage.jsx` to point to your backend URL
+
+**Backend (Railway/Render/Heroku):**
+1. Deploy the backend server
+2. Note the backend URL
+3. Update frontend to use this URL for API calls
+
+## Next Steps
+
+1. ✅ Install and run the application
+2. ✅ Explore all 7 pages
+3. ✅ Test the contact form
+4. ✅ Run the unit tests
+5. Customize the content and branding
+6. Deploy to your preferred hosting
+7. Set up CI/CD pipeline (already configured!)
+
+## Need Help?
+
+- Check the full documentation in `README.md`
+- Visit our website: [https://www.myamr.co.uk](https://www.myamr.co.uk)
+- Contact: info@myamr.co.uk

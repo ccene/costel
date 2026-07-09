@@ -11,7 +11,7 @@ describe('HomePage Component', () => {
       </MemoryRouter>
     );
     
-    expect(screen.getByRole('heading', { name: /Energy Data Management/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /MyAMR/i })).toBeInTheDocument();
   });
 
   it('renders energy types icons', () => {
@@ -44,7 +44,7 @@ describe('HomePage Component', () => {
       </MemoryRouter>
     );
     
-    expect(screen.getByRole('heading', { name: /The AVE System Is Designed For/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /The MyAMR System Is Designed For/i })).toBeInTheDocument();
   });
 
   it('renders award section', () => {

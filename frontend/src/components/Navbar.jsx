@@ -1,94 +1,65 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  const isActive = (path) => {
-    return location.pathname === path;
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <nav className="navbar">
-      <div className="container nav-container">
-        <Link to="/" className="nav-logo" onClick={closeMenu}>
-          AVE <span>System</span>
-        </Link>
-        
-        <button className="nav-toggle" onClick={toggleMenu}>
-          <i className="fas fa-bars"></i>
-        </button>
-        
-        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <li>
-            <Link 
-              to="/" 
-              className={isActive('/') ? 'active' : ''} 
-              onClick={closeMenu}
-            >
+      <div className="navbar-container">
+        <div className="navbar-brand">
+          <Link to="/" className="logo" onClick={closeMobileMenu}>
+            MyAMR
+          </Link>
+        </div>
+
+        <div className="navbar-toggle" onClick={toggleMobileMenu}>
+          <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
+        </div>
+
+        <ul className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+          <li className="navbar-item">
+            <Link to="/" className="navbar-link" onClick={closeMobileMenu}>
               Home
             </Link>
           </li>
-          <li>
-            <Link 
-              to="/modules" 
-              className={isActive('/modules') ? 'active' : ''} 
-              onClick={closeMenu}
-            >
+          <li className="navbar-item">
+            <Link to="/modules" className="navbar-link" onClick={closeMobileMenu}>
               Modules
             </Link>
           </li>
-          <li>
-            <Link 
-              to="/how-it-works" 
-              className={isActive('/how-it-works') ? 'active' : ''} 
-              onClick={closeMenu}
-            >
-              How AVE Works
+          <li className="navbar-item">
+            <Link to="/how-it-works" className="navbar-link" onClick={closeMobileMenu}>
+              How MyAMR Works
             </Link>
           </li>
-          <li>
-            <Link 
-              to="/installations" 
-              className={isActive('/installations') ? 'active' : ''} 
-              onClick={closeMenu}
-            >
+          <li className="navbar-item">
+            <Link to="/installations" className="navbar-link" onClick={closeMobileMenu}>
               Installations
             </Link>
           </li>
-          <li>
-            <Link 
-              to="/partners" 
-              className={isActive('/partners') ? 'active' : ''} 
-              onClick={closeMenu}
-            >
+          <li className="navbar-item">
+            <Link to="/partners" className="navbar-link" onClick={closeMobileMenu}>
               Partners
             </Link>
           </li>
-          <li>
-            <Link 
-              to="/about" 
-              className={isActive('/about') ? 'active' : ''} 
-              onClick={closeMenu}
-            >
+          <li className="navbar-item">
+            <Link to="/about" className="navbar-link" onClick={closeMobileMenu}>
               About
             </Link>
           </li>
-          <li>
-            <Link 
-              to="/contact" 
-              className={isActive('/contact') ? 'active' : ''} 
-              onClick={closeMenu}
-            >
+          <li className="navbar-item">
+            <Link to="/contact" className="navbar-link" onClick={closeMobileMenu}>
               Contact
             </Link>
           </li>
@@ -97,5 +68,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;

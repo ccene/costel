@@ -1,91 +1,85 @@
-import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDatabase, faExchangeAlt, faCloud, faChartBar, faUsers, faCog } from '@fortawesome/free-solid-svg-icons';
 
-function HowItWorksPage() {
-  const steps = [
-    {
-      title: 'Data Collection',
-      description: 'The AVE system obtains data from different types of energy meters and devices. This includes gas meters, power meters, heat meters, water meters, IoT devices, and vehicle tracking systems.',
-      icon: 'fa-download'
-    },
-    {
-      title: 'Data Validation',
-      description: 'All collected data is validated to ensure accuracy and consistency. The system checks for errors, anomalies, and data quality issues before processing.',
-      icon: 'fa-check-double'
-    },
-    {
-      title: 'Data Storage',
-      description: 'Validated data is stored in a uniform data format that allows for efficient monthly evaluation and historical analysis. The system maintains a comprehensive database of all energy consumption data.',
-      icon: 'fa-database'
-    },
-    {
-      title: 'Data Processing',
-      description: 'The system processes the stored data to generate reports, consumption diagrams, and analytical insights. This includes calculating totals, identifying trends, and detecting anomalies.',
-      icon: 'fa-cogs'
-    },
-    {
-      title: 'Data Presentation',
-      description: 'Processed data is presented to customers via the Internet through web applications, or provided to third-party applications and CRM/billing systems for further processing.',
-      icon: 'fa-chart-pie'
-    },
-    {
-      title: 'Integration & Reporting',
-      description: 'The AVE system integrates with various third-party applications (SAP, Oracle, OTE, EBT, etc.) and provides comprehensive reporting capabilities for billing and analysis purposes.',
-      icon: 'fa-file-alt'
-    }
-  ];
+const workflowSteps = [
+  {
+    step: 1,
+    title: 'Data Collection',
+    description: 'The MyAMR system obtains data from different types of energy meters and devices. This includes gas meters, power meters, heat meters, water meters, IoT devices, and vehicle tracking systems.',
+    icon: faDatabase
+  },
+  {
+    step: 2,
+    title: 'Data Transmission',
+    description: 'Collected data is transmitted to the central server using various communication methods including mobile networks, radio frequencies, and direct connections.',
+    icon: faExchangeAlt
+  },
+  {
+    step: 3,
+    title: 'Data Processing',
+    description: 'The central server processes and validates the incoming data, ensuring accuracy and consistency across all measurements.',
+    icon: faCog
+  },
+  {
+    step: 4,
+    title: 'Data Storage',
+    description: 'Processed data is stored in a secure database with backup and recovery capabilities, ensuring data integrity and availability.',
+    icon: faCloud
+  },
+  {
+    step: 5,
+    title: 'Data Analysis',
+    description: 'Advanced analytics and reporting tools provide insights into energy consumption patterns, efficiency, and cost optimization opportunities.',
+    icon: faChartBar
+  },
+  {
+    step: 6,
+    title: 'User Access',
+    description: 'Authorized users can access the system through various interfaces including desktop applications, web browsers, and mobile devices.',
+    icon: faUsers
+  }
+];
 
-  const systemFeatures = [
-    {
-      title: 'Automated Data Flow',
-      description: 'From meter to report without manual intervention',
-      icon: 'fa-sync-alt'
-    },
-    {
-      title: 'Real-time Monitoring',
-      description: 'Monitor energy consumption in real-time',
-      icon: 'fa-clock'
-    },
-    {
-      title: 'Multi-Device Support',
-      description: 'Works with meters from different manufacturers',
-      icon: 'fa-mobile-alt'
-    },
-    {
-      title: 'Scalable Architecture',
-      description: 'Handles millions of households and devices',
-      icon: 'fa-expand-arrows-alt'
-    },
-    {
-      title: 'Secure Data Transfer',
-      description: 'Encrypted communication and secure data storage',
-      icon: 'fa-lock'
-    },
-    {
-      title: 'Flexible Integration',
-      description: 'Connects with existing CRM and billing systems',
-      icon: 'fa-link'
-    }
-  ];
+const benefits = [
+  'Real-time monitoring of energy consumption',
+  'Automated data collection reduces human error',
+  'Comprehensive reporting and analytics',
+  'Seamless integration with existing systems',
+  'Scalable architecture for growing needs',
+  'Multi-language and multi-currency support',
+  'Secure data transmission and storage',
+  'Customizable dashboards and reports'
+];
 
+export default function HowItWorksPage() {
   return (
-    <div>
-      {/* Page Header */}
-      <section className="hero" style={{ padding: '4rem 0', background: 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)' }}>
-        <div className="container text-center">
-          <h1 style={{ color: 'white' }}>How AVE System Works</h1>
-          <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1.25rem' }}>
-            A comprehensive workflow for energy data management
+    <div className="how-it-works-page">
+      {/* Hero Section */}
+      <section className="page-hero">
+        <div className="hero-overlay">
+          <h1 style={{ color: 'white' }}>How MyAMR Works</h1>
+          <p style={{ color: 'white', fontSize: '1.2rem' }}>
+            Discover how our system collects, processes, and delivers energy data
           </p>
         </div>
       </section>
 
-      {/* Workflow Steps */}
-      <section className="section workflow">
+      {/* Workflow Section */}
+      <section className="section">
         <div className="container">
-          <h2 className="section-title">The AVE Workflow</h2>
-          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            {steps.map((step, index) => (
-              <div key={index} className="workflow-step" style={{ counterReset: index === 0 ? 'step' : 'none' }}>
+          <h2 className="section-title">The MyAMR Workflow</h2>
+          <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem' }}>
+            The MyAMR system architecture is designed for efficiency, reliability, and scalability. 
+            Our workflow ensures accurate data collection and timely delivery of information.
+          </p>
+
+          <div className="workflow-steps">
+            {workflowSteps.map((step, index) => (
+              <div key={index} className="workflow-step">
+                <div className="step-number">{step.step}</div>
+                <div className="step-icon">
+                  <FontAwesomeIcon icon={step.icon} size="2x" />
+                </div>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
               </div>
@@ -94,85 +88,37 @@ function HowItWorksPage() {
         </div>
       </section>
 
-      {/* System Diagram Description */}
-      <section className="section" style={{ backgroundColor: '#f8f9fa' }}>
-        <div className="container text-center">
+      {/* System Architecture */}
+      <section className="section architecture">
+        <div className="container">
           <h2 className="section-title">System Architecture</h2>
-          <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto 2rem' }}>
-            The AVE system architecture is designed for efficiency, reliability, and scalability. 
-            It connects various types of energy meters with end-users and third-party systems through 
-            a centralized data processing engine.
-          </p>
-          
-          <div style={{ background: 'white', padding: '2rem', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-              <div style={{ textAlign: 'center', flex: 1, minWidth: '150px' }}>
-                <i className="fas fa-satellite-dish" style={{ fontSize: '2rem', color: '#3498db', marginBottom: '0.5rem' }}></i>
-                <p>Energy Meters</p>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <i className="fas fa-arrow-right" style={{ fontSize: '1.5rem', color: '#95a5a6' }}></i>
-              </div>
-              <div style={{ textAlign: 'center', flex: 1, minWidth: '150px' }}>
-                <i className="fas fa-server" style={{ fontSize: '2rem', color: '#3498db', marginBottom: '0.5rem' }}></i>
-                <p>AVE System</p>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <i className="fas fa-arrow-right" style={{ fontSize: '1.5rem', color: '#95a5a6' }}></i>
-              </div>
-              <div style={{ textAlign: 'center', flex: 1, minWidth: '150px' }}>
-                <i className="fas fa-users" style={{ fontSize: '2rem', color: '#3498db', marginBottom: '0.5rem' }}></i>
-                <p>Users & Systems</p>
-              </div>
+          <div className="architecture-diagram">
+            <div className="architecture-content">
+              <p>
+                MyAMR
+              </p>
+              <p style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                Energy Data Management System
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="section">
+      {/* Benefits Section */}
+      <section className="section benefits">
         <div className="container">
-          <h2 className="section-title">Key System Features</h2>
-          <div className="grid">
-            {systemFeatures.map((feature, index) => (
-              <div key={index} className="card text-center">
-                <div style={{ marginBottom: '1rem' }}>
-                  <i className={`fas ${feature.icon}`} style={{ fontSize: '2.5rem', color: '#3498db' }}></i>
-                </div>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
+          <h2 className="section-title">Benefits of MyAMR</h2>
+          <div className="benefits-grid">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="benefit-card">
+                <span className="check-icon">✓</span>
+                <p>{benefit}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="section" style={{ backgroundColor: '#f8f9fa' }}>
-        <div className="container text-center">
-          <h2 className="section-title">Benefits of AVE System</h2>
-          <div className="grid">
-            <div className="card">
-              <h3>Efficiency</h3>
-              <p>Automate manual processes and reduce operational costs significantly.</p>
-            </div>
-            <div className="card">
-              <h3>Accuracy</h3>
-              <p>Eliminate human errors with automated data validation and processing.</p>
-            </div>
-            <div className="card">
-              <h3>Scalability</h3>
-              <p>Handle millions of devices and households with ease.</p>
-            </div>
-            <div className="card">
-              <h3>Reliability</h3>
-              <p>Proven system with more than 15 years in business.</p>
-            </div>
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-export default HowItWorksPage;

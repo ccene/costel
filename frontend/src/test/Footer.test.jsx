@@ -22,7 +22,7 @@ describe('Footer Component', () => {
     );
     
     // Check for company name in footer
-    expect(screen.getByText('AVE System')).toBeInTheDocument();
+    expect(screen.getByText('MyAMR')).toBeInTheDocument();
   });
 
   it('displays quick links', () => {
@@ -42,7 +42,7 @@ describe('Footer Component', () => {
       </MemoryRouter>
     );
     
-    expect(screen.getByRole('heading', { name: /Contact Info/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /NC13 Industries Ltd./i })).toBeInTheDocument();
   });
 
   it('displays social media links', () => {
@@ -64,6 +64,6 @@ describe('Footer Component', () => {
       </MemoryRouter>
     );
     
-    expect(screen.getByText(/GEOVAP, spol. s r.o./i)).toBeInTheDocument();
+    expect(screen.getByText(/NC13 Industries Ltd./i)).toBeInTheDocument();
   });
 });

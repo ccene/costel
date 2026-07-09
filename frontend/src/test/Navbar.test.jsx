@@ -14,7 +14,7 @@ describe('Navbar Component', () => {
     // Check for main navigation links
     const homeLink = screen.getByRole('link', { name: /Home/i });
     const modulesLink = screen.getByRole('link', { name: /Modules/i });
-    const howItWorksLink = screen.getByRole('link', { name: /How AVE Works/i });
+    const howItWorksLink = screen.getByRole('link', { name: /How MyAMR Works/i });
     const installationsLink = screen.getByRole('link', { name: /Installations/i });
     const partnersLink = screen.getByRole('link', { name: /Partners/i });
     const aboutLink = screen.getByRole('link', { name: /About/i });
@@ -29,7 +29,7 @@ describe('Navbar Component', () => {
     expect(contactLink).toBeInTheDocument();
   });
 
-  it('renders AVE System logo', () => {
+  it('renders MyAMR logo', () => {
     render(
       <MemoryRouter>
         <Navbar />
@@ -37,7 +37,7 @@ describe('Navbar Component', () => {
     );
     
     // Check for the logo link
-    const logoLink = screen.getByRole('link', { name: /AVE System/i });
+    const logoLink = screen.getByRole('link', { name: /MyAMR/i });
     expect(logoLink).toBeInTheDocument();
     expect(logoLink).toHaveAttribute('href', '/');
   });

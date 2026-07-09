@@ -1,7 +1,7 @@
 {
-  "name": "ave-system-backend",
+  "name": "myamr-backend",
   "version": "1.0.0",
-  "description": "Backend for AVE System MPA",
+  "description": "Backend for MyAMR by NC13 Industries Ltd.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
