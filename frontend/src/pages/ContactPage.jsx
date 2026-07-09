@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faMapMarkerAlt, faClock, faPaperPlane, faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { APP_CONFIG } from '../config';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -45,7 +46,7 @@ export default function ContactPage() {
     setSubmitStatus(null);
 
     try {
-      const response = await axios.post('/api/contact', formData);
+      const response = await axios.post(`${APP_CONFIG.API_BASE_URL}/contact`, formData);
       if (response.data.success) {
         setSubmitStatus('success');
         setFormData({
@@ -64,6 +65,124 @@ export default function ContactPage() {
       setIsSubmitting(false);
     }
   };
+
+  const renderContactForm = () => (
+    <section className="contact-form-section">
+      <h2 className="section-title">Send Us a Message</h2>
+      
+      {submitStatus === 'success' && (
+        <div className="alert alert-success">
+          <FontAwesomeIcon icon={faCheckCircle} /> Thank you for your message! We will get back to you soon.
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className="alert alert-error">
+          <FontAwesomeIcon icon={faExclamationCircle} /> There was an error submitting your message. Please try again.
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div className="form-group">
+          <label htmlFor="name">Name *</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className={errors.name ? 'error' : ''}
+            placeholder="Your name"
+          />
+          {errors.name && <span className="error-message">{errors.name}</span>}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">Email *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={errors.email ? 'error' : ''}
+            placeholder="Your email address"
+          />
+          {errors.email && <span className="error-message">{errors.email}</span>}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="company">Company</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            placeholder="Your company name"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="phone">Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Your phone number"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="message">Message *</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            className={errors.message ? 'error' : ''}
+            placeholder="Your message"
+            rows={5}
+          />
+          {errors.message && <span className="error-message">{errors.message}</span>}
+        </div>
+
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Sending...' : (
+            <>
+              <FontAwesomeIcon icon={faPaperPlane} /> Send Message
+            </>
+          )}
+        </button>
+      </form>
+    </section>
+  );
+
+  const renderEmailLink = () => (
+    <section className="contact-form-section">
+      <h2 className="section-title">Get In Touch</h2>
+      <div className="email-link-container">
+        <p className="email-link-intro">
+          We'd love to hear from you. Please send us an email with your inquiry.
+        </p>
+        <a 
+          href={`mailto:${APP_CONFIG.CONTACT_EMAIL}`}
+          className="btn btn-primary btn-large"
+        >
+          <FontAwesomeIcon icon={faEnvelope} /> Email Us at {APP_CONFIG.CONTACT_EMAIL}
+        </a>
+        <p className="email-link-note">
+          Click the button above to open your email client, or copy the address and send us a message manually.
+        </p>
+      </div>
+    </section>
+  );
 
   return (
     <div className="contact-page">
@@ -88,8 +207,8 @@ export default function ContactPage() {
             </div>
             <div className="info-content">
               <h3>Address</h3>
-              <p>NC13 Industries Ltd.</p>
-              <p>United Kingdom</p>
+              <p>{APP_CONFIG.COMPANY_NAME}</p>
+              <p>{APP_CONFIG.COMPANY_ADDRESS}</p>
             </div>
           </div>
 
@@ -99,7 +218,7 @@ export default function ContactPage() {
             </div>
             <div className="info-content">
               <h3>Phone</h3>
-              <p>+44 (0) 1234 567890</p>
+              <p>{APP_CONFIG.COMPANY_PHONE}</p>
             </div>
           </div>
 
@@ -109,7 +228,7 @@ export default function ContactPage() {
             </div>
             <div className="info-content">
               <h3>Email</h3>
-              <p>info@myamr.co.uk</p>
+              <p>{APP_CONFIG.COMPANY_EMAIL}</p>
             </div>
           </div>
 
@@ -119,108 +238,14 @@ export default function ContactPage() {
             </div>
             <div className="info-content">
               <h3>Business Hours</h3>
-              <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-              <p>Saturday - Sunday: Closed</p>
+              <p>{APP_CONFIG.BUSINESS_HOURS.weekdays}</p>
+              <p>{APP_CONFIG.BUSINESS_HOURS.weekends}</p>
             </div>
           </div>
         </section>
 
-        {/* Contact Form */}
-        <section className="contact-form-section">
-          <h2 className="section-title">Send Us a Message</h2>
-          
-          {submitStatus === 'success' && (
-            <div className="alert alert-success">
-              <FontAwesomeIcon icon={faCheckCircle} /> Thank you for your message! We will get back to you soon.
-            </div>
-          )}
-
-          {submitStatus === 'error' && (
-            <div className="alert alert-error">
-              <FontAwesomeIcon icon={faExclamationCircle} /> There was an error submitting your message. Please try again.
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="contact-form">
-            <div className="form-group">
-              <label htmlFor="name">Name *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={errors.name ? 'error' : ''}
-                placeholder="Your name"
-              />
-              {errors.name && <span className="error-message">{errors.name}</span>}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={errors.email ? 'error' : ''}
-                placeholder="Your email address"
-              />
-              {errors.email && <span className="error-message">{errors.email}</span>}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="company">Company</label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                placeholder="Your company name"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phone">Phone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Your phone number"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">Message *</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className={errors.message ? 'error' : ''}
-                placeholder="Your message"
-                rows={5}
-              />
-              {errors.message && <span className="error-message">{errors.message}</span>}
-            </div>
-
-            <button
-              type="submit"
-              className="btn btn-primary"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Sending...' : (
-                <>
-                  <FontAwesomeIcon icon={faPaperPlane} /> Send Message
-                </>
-              )}
-            </button>
-          </form>
-        </section>
+        {/* Conditional rendering based on feature toggle */}
+        {APP_CONFIG.CONTACT_FORM_ENABLED ? renderContactForm() : renderEmailLink()}
       </div>
 
       {/* Map Section */}
