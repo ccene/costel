@@ -10,16 +10,16 @@ Open two terminal windows and run:
 
 **Terminal 1 (Backend):**
 ```bash
-cd /workspace/ave-system-mpa/backend
+cd backend
 npm install
 npm start
 ```
 
 **Terminal 2 (Frontend):**
 ```bash
-cd /workspace/ave-system-mpa/frontend
+cd frontend
 npm install
-npm start
+npm run dev
 ```
 
 ### 2. Access the Application
@@ -31,33 +31,46 @@ npm start
 
 ```
 ave-system-mpa/
-├── backend/
-│   ├── server.js          # Express server
-│   └── package.json
-├── frontend/
-│   ├── public/
-│   │   └── index.html
-│   ├── src/
-│   │   ├── App.js         # Routes
-│   │   ├── index.js       # Entry point
-│   │   ├── components/
-│   │   │   ├── Navbar.js
-│   │   │   └── Footer.js
-│   │   ├── pages/
-│   │   │   ├── HomePage.js
-│   │   │   ├── ModulesPage.js
-│   │   │   ├── HowItWorksPage.js
-│   │   │   ├── InstallationsPage.js
-│   │   │   ├── PartnersPage.js
-│   │   │   ├── AboutPage.js
-│   │   │   └── ContactPage.js
-│   │   └── styles/
-│   │       └── main.css
-│   └── package.json
-└── README.md
+├──── backend/
+│   ├──── server.js          # Express server
+│   └──── package.json
+├──── frontend/
+│   ├──── index.html         # Entry HTML
+│   ├──── package.json
+│   ├──── vite.config.js     # Vite config
+│   ├──── vitest.config.js   # Test config
+│   └──── src/
+│       ├──── index.jsx      # Entry point
+│       ├──── App.jsx        # Routes
+│       ├──── components/
+│       │   ├──── Navbar.jsx
+│       │   └──── Footer.jsx
+│       ├──── pages/
+│       │   ├──── HomePage.jsx
+│       │   ├──── ModulesPage.jsx
+│       │   ├──── HowItWorksPage.jsx
+│       │   ├──── InstallationsPage.jsx
+│       │   ├──── PartnersPage.jsx
+│       │   ├──── AboutPage.jsx
+│       │   └──── ContactPage.jsx
+│       ├──── styles/
+│       │   └──── main.css
+│       └──── test/
+│           ├──── setup.js
+│           ├──── App.test.jsx
+│           ├──── Navbar.test.jsx
+│           ├──── Footer.test.jsx
+│           ├──── HomePage.test.jsx
+│           └──── ContactPage.test.jsx
+├──── .github/
+│   └──── workflows/
+│       └──── ci-cd.yml      # CI/CD pipeline
+├──── README.md
+├──── QUICKSTART.md
+└──── PROJECT_SUMMARY.md
 ```
 
-## 🎯 Available Pages
+## 🌐 Available Pages
 
 | Route | Page | Description |
 |-------|------|-------------|
@@ -87,11 +100,27 @@ Edit `frontend/src/styles/main.css`:
 ```
 
 ### Add New Page
-1. Create file in `frontend/src/pages/`
-2. Add route in `frontend/src/App.js`
-3. Add link in `frontend/src/components/Navbar.js`
+1. Create file in `frontend/src/pages/` (e.g., `NewPage.jsx`)
+2. Add route in `frontend/src/App.jsx`
+3. Add link in `frontend/src/components/Navbar.jsx`
 
-## 📦 Deployment Options
+### Run Tests
+```bash
+cd frontend
+npm test
+```
+
+Or in watch mode:
+```bash
+npm run test:watch
+```
+
+With coverage:
+```bash
+npm run test:coverage
+```
+
+## 📊 Deployment Options
 
 ### Option A: Local Development (Recommended for Testing)
 ```bash
@@ -99,7 +128,7 @@ Edit `frontend/src/styles/main.css`:
 cd backend && npm start
 
 # Terminal 2
-cd frontend && npm start
+cd frontend && npm run dev
 ```
 
 ### Option B: Production Build
@@ -113,9 +142,14 @@ cd backend && npm start
 
 ### Option C: Separate Hosting
 1. Build frontend: `cd frontend && npm run build`
-2. Host `frontend/build` folder on Netlify/Vercel
+2. Host `frontend/dist` folder on Netlify/Vercel
 3. Deploy backend to Railway/Render/Heroku
-4. Update API endpoint in `ContactPage.js`
+4. Update API endpoint in `ContactPage.jsx`
+
+### Option D: GitHub Pages (Frontend Only)
+1. Push to main branch
+2. CI/CD pipeline will build and deploy to GitHub Pages
+3. Backend API calls will need to be proxied or use a separate backend service
 
 ## 🎨 Design Features
 
@@ -125,22 +159,38 @@ cd backend && npm start
 - ✅ Font Awesome icons
 - ✅ Professional color scheme
 - ✅ Consistent styling across all pages
+- ✅ Vite for fast builds and HMR
+- ✅ Unit tests with Vitest
+- ✅ CI/CD pipeline with GitHub Actions
 
-## 📞 Support
+## 📋 Available Scripts
 
-For issues or questions:
-- Check the README files in each folder
-- Review the code comments
-- The contact form logs to console for development
+### Frontend
 
-## 🔍 Troubleshooting
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server (port 3000) |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm test` | Run unit tests |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests with coverage |
+
+### Backend
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start production server (port 5000) |
+| `npm run dev` | Start with nodemon (auto-restart) |
+
+## 🐛 Troubleshooting
 
 **Frontend won't start?**
 ```bash
 cd frontend
 rm -rf node_modules package-lock.json
 npm install
-npm start
+npm run dev
 ```
 
 **Backend won't start?**
@@ -153,9 +203,32 @@ npm start
 
 **CORS issues?**
 - Ensure backend is running on port 5000
-- Frontend proxy is configured in `frontend/package.json`
+- Frontend proxy is configured in `frontend/vite.config.js`
 
 **Contact form not working?**
 - Check backend console for errors
 - Verify backend server is running
 - Test API endpoint: `curl -X POST http://localhost:5000/api/contact -H "Content-Type: application/json" -d '{"name":"Test","email":"test@test.com","message":"Hello"}'`
+
+**Tests failing?**
+- Ensure all dependencies are installed: `npm install`
+- Run tests with verbose output: `npm run test:watch`
+- Check test files in `frontend/src/test/`
+
+## 📚 Documentation
+
+- **Main Documentation**: [README.md](./README.md)
+- **Frontend Documentation**: [frontend/README.md](./frontend/README.md)
+- **Project Summary**: [PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md)
+- **CI/CD Pipeline**: [.github/workflows/ci-cd.yml](.github/workflows/ci-cd.yml)
+
+## 🚀 Next Steps
+
+1. ✅ Clone and install dependencies
+2. ✅ Start backend and frontend servers
+3. ✅ Access the app at http://localhost:3000
+4. ✅ Explore all 7 pages
+5. ✅ Test the contact form
+6. ✅ Run the unit tests
+7. ✅ Customize as needed
+8. ✅ Deploy to production
