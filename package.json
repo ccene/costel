@@ -1,0 +1,42 @@
+{
+  "name": "myamr-mpa",
+  "version": "1.0.0",
+  "description": "MyAMR - Multi-Page Application for energy consumption data reading and management",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "test": "cd frontend && npm test",
+    "start:backend": "cd backend && npm start",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start:all": "concurrently \"npm run start:backend\" \"npm run dev:frontend\""
+  },
+  "keywords": [
+    "myamr",
+    "energy",
+    "consumption",
+    "react",
+    "express",
+    "vite"
+  ],
+  "author": "NC13 Industries Ltd.",
+  "license": "MIT",
+  "homepage": "https://www.myamr.co.uk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccene/costel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ccene/costel/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
