@@ -1,0 +1,48 @@
+// Form Component Styles
+
+// Contact Form Section
+.contact-form-section {
+  background: $white;
+  padding: 2rem;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: $primary-color;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  @include form-input;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: $accent-color;
+}
+
+.error-message {
+  color: $accent-color;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}

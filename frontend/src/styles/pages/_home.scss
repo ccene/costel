@@ -1,0 +1,48 @@
+// Home Page Styles
+
+// Hero Section
+.hero {
+  @include hero-background;
+  height: 80vh;
+  @include flex-center;
+  text-align: center;
+  color: $white;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: $white;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: rgba($white, 0.9);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// Page Hero (for non-home pages)
+.page-hero {
+  @include hero-background;
+  height: 40vh;
+  @include flex-center;
+  text-align: center;
+  color: $white;
+}
+
+.hero-overlay {
+  padding: 2rem;
+  max-width: 800px;
+}

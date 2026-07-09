@@ -1,0 +1,92 @@
+// Flexbox Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Grid Mixins
+@mixin grid-container {
+  display: grid;
+  gap: 1rem;
+}
+
+// Responsive Mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == md {
+    @media (max-width: #{$breakpoint-md}) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (max-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  }
+}
+
+// Button Mixins
+@mixin button-base {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: $transition;
+  text-align: center;
+}
+
+// Card Mixins
+@mixin card-base {
+  background: $white;
+  border-radius: $border-radius;
+  padding: 1.5rem;
+  box-shadow: $shadow;
+}
+
+// Section Mixins
+@mixin section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: $primary-color;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: $secondary-color;
+    margin: 0.5rem auto 0;
+  }
+}
+
+// Hero Background Mixin
+@mixin hero-background {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23444" width="100" height="100"/></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+// Form Mixins
+@mixin form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  transition: $transition;
+
+  &:focus {
+    outline: none;
+    border-color: $secondary-color;
+    box-shadow: 0 0 0 2px rgba($secondary-color, 0.2);
+  }
+}
