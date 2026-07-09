@@ -1,0 +1,44 @@
+// Button Styles
+
+.btn {
+  @include button-base;
+  background-color: $secondary-color;
+  color: $white;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+// Button Variants
+.btn-outline {
+  @include button-base;
+  background-color: transparent;
+  color: $secondary-color;
+  border: 2px solid $secondary-color;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $white;
+  }
+}
+
+.btn-accent {
+  @include button-base;
+  background-color: $accent-color;
+
+  &:hover {
+    background-color: darken($accent-color, 10%);
+  }
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+.btn-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

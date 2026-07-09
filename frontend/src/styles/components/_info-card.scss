@@ -1,0 +1,56 @@
+// Info Card Component Styles
+
+// Contact Info
+.contact-info {
+  background: $white;
+  padding: 2rem;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+}
+
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-icon {
+  width: 50px;
+  height: 50px;
+  background: $secondary-color;
+  color: $white;
+  border-radius: 50%;
+  @include flex-center;
+  flex-shrink: 0;
+}
+
+.info-content h3 {
+  color: $primary-color;
+  margin-bottom: 0.5rem;
+}
+
+.info-content p {
+  color: $text-color;
+  margin: 0.25rem 0;
+}
+
+// Email Link Styles
+.email-link-container {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.email-link-intro {
+  font-size: 1.1rem;
+  color: $text-light;
+  margin-bottom: 1.5rem;
+}
+
+.email-link-note {
+  font-size: 0.9rem;
+  color: $text-light;
+  margin-top: 1rem;
+  font-style: italic;
+}

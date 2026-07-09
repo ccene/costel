@@ -1,0 +1,33 @@
+// About Page Styles
+
+// Timeline
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: $secondary-color;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    width: 12px;
+    height: 12px;
+    background: $secondary-color;
+    border-radius: 50%;
+  }
+}

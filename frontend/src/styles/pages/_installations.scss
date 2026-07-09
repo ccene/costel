@@ -1,0 +1,11 @@
+// Installations Page Styles
+
+.installations {
+  background-color: $light-color;
+}
+
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}

@@ -1,0 +1,23 @@
+// Reset and Base Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-base;
+  line-height: $base-line-height;
+  color: $text-color;
+  background-color: $white;
+}
+
+// Layout
+.app {
+  @include flex-column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
