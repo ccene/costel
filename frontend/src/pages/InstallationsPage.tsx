@@ -1,7 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faGlobe, faBuilding, faMapMarkerAlt, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
-const countries = [
+interface Statistics {
+  totalInstallations: string;
+  countries: string;
+  metersManaged: string;
+  customers: string;
+}
+
+interface CompaniesByCountry {
+  [key: string]: string[];
+}
+
+const countries: string[] = [
   'United Kingdom',
   'United States',
   'Germany',
@@ -16,7 +28,7 @@ const countries = [
   'Switzerland'
 ];
 
-const companiesByCountry = {
+const companiesByCountry: CompaniesByCountry = {
   'United Kingdom': ['British Gas', 'EDF Energy', 'Scottish Power', 'National Grid'],
   'United States': ['PG&E', 'Duke Energy', 'Southern Company', 'NextEra Energy'],
   'Germany': ['E.ON', 'RWE', 'Vattenfall', 'EnBW'],
@@ -25,14 +37,14 @@ const companiesByCountry = {
   'Belgium': ['Fluvius', 'Sibelga', 'ORES']
 };
 
-const statistics = {
+const statistics: Statistics = {
   totalInstallations: '500+',
   countries: '12+',
   metersManaged: '1M+',
   customers: '1000+'
 };
 
-export default function InstallationsPage() {
+export default function InstallationsPage(): React.ReactElement {
   return (
     <div className="installations-page">
       {/* Hero Section */}
@@ -78,7 +90,7 @@ export default function InstallationsPage() {
             MyAMR installations can be found in multiple countries across different continents.
           </p>
           <div className="countries-grid">
-            {countries.map((country, index) => (
+            {countries.map((country: string, index: number) => (
               <div key={index} className="country-card">
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
                 <span>{country}</span>
@@ -93,13 +105,13 @@ export default function InstallationsPage() {
         <div className="container">
           <h2 className="section-title">Companies Using MyAMR</h2>
           <div className="companies-list">
-            {Object.entries(companiesByCountry).map(([country, companies]) => (
+            {Object.entries(companiesByCountry).map(([country, companies]: [string, string[]]) => (
               <div key={country} className="country-companies">
                 <h3>
                   <FontAwesomeIcon icon={faGlobe} /> {country}
                 </h3>
                 <ul>
-                  {companies.map((company, index) => (
+                  {companies.map((company: string, index: number) => (
                     <li key={index}>{company}</li>
                   ))}
                 </ul>

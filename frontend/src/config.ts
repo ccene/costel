@@ -12,17 +12,46 @@
  * - VITE_API_BASE_URL: API base URL (default: '/api')
  */
 
+// Type for business hours
+interface BusinessHours {
+  weekdays: string;
+  weekends: string;
+}
+
+// Type for application configuration
+interface AppConfig {
+  CONTACT_FORM_ENABLED: boolean;
+  CONTACT_EMAIL: string;
+  API_BASE_URL: string;
+  COMPANY_NAME: string;
+  COMPANY_ADDRESS: string;
+  COMPANY_PHONE: string;
+  COMPANY_EMAIL: string;
+  BUSINESS_HOURS: BusinessHours;
+}
+
+// Declare import.meta.env for Vite
+interface ImportMetaEnv {
+  VITE_CONTACT_FORM_ENABLED?: string;
+  VITE_CONTACT_EMAIL?: string;
+  VITE_API_BASE_URL?: string;
+}
+
+interface ImportMeta {
+  env: ImportMetaEnv;
+}
+
 // Get configuration from environment variables (Vite uses VITE_ prefix)
-const getConfigFromEnv = () => {
+const getConfigFromEnv = (): Partial<AppConfig> => {
   return {
-    CONTACT_FORM_ENABLED: import.meta.env.VITE_CONTACT_FORM_ENABLED !== 'false',
-    CONTACT_EMAIL: import.meta.env.VITE_CONTACT_EMAIL || 'info@myamr.co.uk',
-    API_BASE_URL: import.meta.env.VITE_API_BASE_URL || '/api'
+    CONTACT_FORM_ENABLED: (import.meta as ImportMeta).env.VITE_CONTACT_FORM_ENABLED !== 'false',
+    CONTACT_EMAIL: (import.meta as ImportMeta).env.VITE_CONTACT_EMAIL || 'info@myamr.co.uk',
+    API_BASE_URL: (import.meta as ImportMeta).env.VITE_API_BASE_URL || '/api'
   };
 };
 
 // Default configuration (used when environment variables are not set)
-const DEFAULT_CONFIG = {
+const DEFAULT_CONFIG: AppConfig = {
   // Feature toggle for contact form
   // When true: Full contact form with backend integration
   // When false: Simple email link only (frontend-only mode)
@@ -50,7 +79,7 @@ const DEFAULT_CONFIG = {
 // Merge environment configuration with defaults
 const envConfig = getConfigFromEnv();
 
-export const APP_CONFIG = {
+export const APP_CONFIG: AppConfig = {
   ...DEFAULT_CONFIG,
   ...envConfig
 };

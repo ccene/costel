@@ -1,7 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faDatabase, faExchangeAlt, faCloud, faChartBar, faUsers, faCog } from '@fortawesome/free-solid-svg-icons';
 
-const workflowSteps = [
+interface WorkflowStep {
+  step: number;
+  title: string;
+  description: string;
+  icon: IconDefinition;
+}
+
+const workflowSteps: WorkflowStep[] = [
   {
     step: 1,
     title: 'Data Collection',
@@ -40,7 +48,7 @@ const workflowSteps = [
   }
 ];
 
-const benefits = [
+const benefits: string[] = [
   'Real-time monitoring of energy consumption',
   'Automated data collection reduces human error',
   'Comprehensive reporting and analytics',
@@ -51,7 +59,7 @@ const benefits = [
   'Customizable dashboards and reports'
 ];
 
-export default function HowItWorksPage() {
+export default function HowItWorksPage(): React.ReactElement {
   return (
     <div className="how-it-works-page">
       {/* Hero Section */}
@@ -74,7 +82,7 @@ export default function HowItWorksPage() {
           </p>
 
           <div className="workflow-steps">
-            {workflowSteps.map((step, index) => (
+            {workflowSteps.map((step: WorkflowStep, index: number) => (
               <div key={index} className="workflow-step">
                 <div className="step-number">{step.step}</div>
                 <div className="step-icon">
@@ -110,9 +118,9 @@ export default function HowItWorksPage() {
         <div className="container">
           <h2 className="section-title">Benefits of MyAMR</h2>
           <div className="benefits-grid">
-            {benefits.map((benefit, index) => (
+            {benefits.map((benefit: string, index: number) => (
               <div key={index} className="benefit-card">
-                <span className="check-icon">✓</span>
+                <span className="check-icon">\u2713</span>
                 <p>{benefit}</p>
               </div>
             ))}

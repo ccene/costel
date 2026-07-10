@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
+import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import path from 'path';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,8 +17,24 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from React frontend
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
+// Type for contact form data
+interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+  company?: string;
+  phone?: string;
+}
+
+// Type for API response
+interface ApiResponse<T> {
+  success: boolean;
+  message: string;
+  data?: T;
+}
+
 // API Routes
-app.post('/api/contact', (req, res) => {
+app.post('/api/contact', (req: Request<{}, {}, ContactFormData>, res: Response<ApiResponse<{}>>) => {
   // Check if contact form is enabled
   if (!CONTACT_FORM_ENABLED) {
     return res.status(403).json({
@@ -62,8 +78,14 @@ app.post('/api/contact', (req, res) => {
   });
 });
 
+// Type for config response
+interface ConfigResponse {
+  contactFormEnabled: boolean;
+  contactEmail: string;
+}
+
 // API endpoint to get configuration (for frontend to check if form is enabled)
-app.get('/api/config', (req, res) => {
+app.get('/api/config', (req: Request, res: Response<ConfigResponse>) => {
   res.json({
     contactFormEnabled: CONTACT_FORM_ENABLED,
     contactEmail: 'info@myamr.co.uk'
@@ -71,7 +93,7 @@ app.get('/api/config', (req, res) => {
 });
 
 // Serve React app for all other routes
-app.get('*', (req, res) => {
+app.get('*', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
@@ -79,3 +101,5 @@ app.listen(PORT, () => {
   console.log(`MyAMR Server running on port ${PORT}`);
   console.log(`Contact form API endpoint: ${CONTACT_FORM_ENABLED ? 'ENABLED' : 'DISABLED'}`);
 });
+
+export default app;

@@ -1,7 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAward, faCalendarAlt, faUsers, faLightbulb, faCog, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faAward, faUsers, faLightbulb, faGlobe } from '@fortawesome/free-solid-svg-icons';
 
-const companyHistory = [
+interface HistoryItem {
+  year: string;
+  event: string;
+}
+
+interface Value {
+  title: string;
+  description: string;
+  icon: IconDefinition;
+}
+
+const companyHistory: HistoryItem[] = [
   {
     year: '2024',
     event: 'MyAMR platform launched by NC13 Industries Ltd.'
@@ -24,7 +36,7 @@ const companyHistory = [
   }
 ];
 
-const companyValues = [
+const companyValues: Value[] = [
   {
     title: 'Innovation',
     description: 'We continuously invest in research and development to bring cutting-edge solutions to our customers.',
@@ -47,7 +59,7 @@ const companyValues = [
   }
 ];
 
-export default function AboutPage() {
+export default function AboutPage(): React.ReactElement {
   return (
     <div className="about-page">
       {/* Hero Section */}
@@ -97,7 +109,7 @@ export default function AboutPage() {
         <div className="container">
           <h2 className="section-title">Company History</h2>
           <div className="timeline">
-            {companyHistory.map((item, index) => (
+            {companyHistory.map((item: HistoryItem, index: number) => (
               <div key={index} className="timeline-item">
                 <div className="timeline-year">{item.year}</div>
                 <div className="timeline-content">
@@ -114,7 +126,7 @@ export default function AboutPage() {
         <div className="container">
           <h2 className="section-title">Our Values</h2>
           <div className="values-grid">
-            {companyValues.map((value, index) => (
+            {companyValues.map((value: Value, index: number) => (
               <div key={index} className="value-card">
                 <div className="value-icon">
                   <FontAwesomeIcon icon={value.icon} size="2x" />
