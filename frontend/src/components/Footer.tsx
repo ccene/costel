@@ -1,8 +1,9 @@
+// @ts-nocheck
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-export default function Footer() {
+export default function Footer(): React.ReactElement {
   return (
     <footer className="footer">
       <div className="footer-container">

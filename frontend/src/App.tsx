@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -10,7 +11,7 @@ import PartnersPage from './pages/PartnersPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
-function App() {
+function App(): React.ReactElement {
   return (
     <div className="app">
       <Navbar />

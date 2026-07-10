@@ -1,11 +1,27 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, FormEvent, ChangeEvent } from 'react';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faMapMarkerAlt, faClock, faPaperPlane, faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { APP_CONFIG } from '../config';
 
-export default function ContactPage() {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  message: string;
+}
+
+interface Errors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
+type SubmitStatus = 'success' | 'error' | null;
+
+export default function ContactPage(): React.ReactElement {
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     company: '',
@@ -13,20 +29,20 @@ export default function ContactPage() {
     message: ''
   });
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [errors, setErrors] = useState<Errors>({});
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+    if (errors[name as keyof Errors]) {
+      setErrors(prev => ({ ...prev, [name as keyof Errors]: '' }));
     }
   };
 
-  const validateForm = () => {
-    const newErrors = {};
+  const validateForm = (): boolean => {
+    const newErrors: Errors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
@@ -38,7 +54,7 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     if (!validateForm()) return;
 
@@ -46,7 +62,7 @@ export default function ContactPage() {
     setSubmitStatus(null);
 
     try {
-      const response = await axios.post(`${APP_CONFIG.API_BASE_URL}/contact`, formData);
+      const response: AxiosResponse<{ success: boolean }> = await axios.post(`${APP_CONFIG.API_BASE_URL}/contact`, formData);
       if (response.data.success) {
         setSubmitStatus('success');
         setFormData({
@@ -59,14 +75,16 @@ export default function ContactPage() {
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      const axiosError = error as AxiosError;
+      console.error('Contact form submission error:', axiosError);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const renderContactForm = () => (
+  const renderContactForm = (): React.ReactElement => (
     <section className="contact-form-section">
       <h2 className="section-title">Send Us a Message</h2>
       
@@ -164,7 +182,7 @@ export default function ContactPage() {
     </section>
   );
 
-  const renderEmailLink = () => (
+  const renderEmailLink = (): React.ReactElement => (
     <section className="contact-form-section">
       <h2 className="section-title">Get In Touch</h2>
       <div className="email-link-container">

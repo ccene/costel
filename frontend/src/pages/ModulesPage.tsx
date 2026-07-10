@@ -1,7 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faDesktop, faMobileAlt, faTabletAlt, faServer, faCar, faUser } from '@fortawesome/free-solid-svg-icons';
 
-const modules = [
+interface Module {
+  name: string;
+  description: string;
+  features: string[];
+  icon: IconDefinition;
+}
+
+const modules: Module[] = [
   {
     name: 'MyAMR Client',
     description: "MyAMR's main client module used for working with data and managing the entire system.",
@@ -76,7 +84,7 @@ const modules = [
   }
 ];
 
-export default function ModulesPage() {
+export default function ModulesPage(): React.ReactElement {
   return (
     <div className="modules-page">
       {/* Hero Section */}
@@ -94,7 +102,7 @@ export default function ModulesPage() {
         <div className="container">
           <h2 className="section-title">Our Modules</h2>
           <div className="modules-grid">
-            {modules.map((module, index) => (
+            {modules.map((module: Module, index: number) => (
               <div key={index} className="module-card">
                 <div className="module-icon">
                   <FontAwesomeIcon icon={module.icon} size="2x" />
@@ -102,9 +110,9 @@ export default function ModulesPage() {
                 <h3>{module.name}</h3>
                 <p>{module.description}</p>
                 <ul className="module-features">
-                  {module.features.map((feature, featureIndex) => (
+                  {module.features.map((feature: string, featureIndex: number) => (
                     <li key={featureIndex}>
-                      <span className="check-icon">✓</span> {feature}
+                      <span className="check-icon">\u2713</span> {feature}
                     </li>
                   ))}
                 </ul>

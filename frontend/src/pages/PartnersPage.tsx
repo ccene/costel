@@ -1,7 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faGlobe, faHandshake, faUsers, faBuilding, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-const partnerBenefits = [
+interface PartnerNetworkItem {
+  country: string;
+  partners: number;
+}
+
+const partnerBenefits: string[] = [
   'Access to cutting-edge energy data management technology',
   'Comprehensive training and support programs',
   'Marketing and sales support materials',
@@ -12,7 +18,7 @@ const partnerBenefits = [
   'Co-branding opportunities'
 ];
 
-const partnerNetwork = [
+const partnerNetwork: PartnerNetworkItem[] = [
   { country: 'United Kingdom', partners: 15 },
   { country: 'United States', partners: 25 },
   { country: 'Germany', partners: 12 },
@@ -23,7 +29,7 @@ const partnerNetwork = [
   { country: 'Benelux', partners: 14 }
 ];
 
-export default function PartnersPage() {
+export default function PartnersPage(): React.ReactElement {
   return (
     <div className="partners-page">
       {/* Hero Section */}
@@ -55,9 +61,9 @@ export default function PartnersPage() {
             Join our global network of partners and distributors. As a MyAMR partner, you'll benefit from:
           </p>
           <div className="benefits-grid">
-            {partnerBenefits.map((benefit, index) => (
+            {partnerBenefits.map((benefit: string, index: number) => (
               <div key={index} className="benefit-card">
-                <span className="check-icon">✓</span>
+                <span className="check-icon">\u2713</span>
                 <p>{benefit}</p>
               </div>
             ))}
@@ -70,7 +76,7 @@ export default function PartnersPage() {
         <div className="container">
           <h2 className="section-title">Our Global Network</h2>
           <div className="network-grid">
-            {partnerNetwork.map((region, index) => (
+            {partnerNetwork.map((region: PartnerNetworkItem, index: number) => (
               <div key={index} className="network-card">
                 <FontAwesomeIcon icon={faGlobe} size="2x" />
                 <h3>{region.country}</h3>
